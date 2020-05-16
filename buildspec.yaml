@@ -11,7 +11,10 @@ phases:
       - cfn-lint -t sam-app/template.yaml
       - cd sam-app/
       - sam build
-      - aws cloudformation package --template-file template.yaml --s3-bucket ${PACKAGE_BUCKET} --output-template-file packaged-template.yaml
+  post_build:
+    commands:
+      - sam package --output-template-file packaged.yaml --s3-bucket my-code-pipeline-bucketz
+      #- aws cloudformation package --template-file template.yaml --s3-bucket ${PACKAGE_BUCKET} --output-template-file packaged-template.yaml
 artifacts:
   files:
     - packaged-template.yaml
