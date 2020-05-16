@@ -13,9 +13,7 @@ phases:
       - sam build
   post_build:
     commands:
-      - cd sam-app/
       - sam package --s3-bucket ${PACKAGE_BUCKET} --output-template-file packaged-template.yaml
-      #- aws cloudformation package --template-file template.yaml --s3-bucket ${PACKAGE_BUCKET} --output-template-file packaged-template.yaml
 artifacts:
   files:
-    - packaged-template.yaml
+    - sam-app/packaged-template.yaml
