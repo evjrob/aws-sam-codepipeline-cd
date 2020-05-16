@@ -13,7 +13,7 @@ phases:
       - sam build
   post_build:
     commands:
-      - sam package --output-template-file packaged.yaml --s3-bucket my-code-pipeline-bucketz
+      - sam package --s3-bucket ${PACKAGE_BUCKET} --output-template-file packaged-template.yaml
       #- aws cloudformation package --template-file template.yaml --s3-bucket ${PACKAGE_BUCKET} --output-template-file packaged-template.yaml
 artifacts:
   files:
